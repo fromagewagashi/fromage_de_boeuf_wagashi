@@ -61,19 +61,6 @@ button {
   gap: 1rem;
   padding: 1rem;
 }
-@media (max-width: 600px) {
-  .products {
-    grid-template-columns: repeat(2, 1fr); /* 2 produits par ligne */
-    gap: 12px; /* espace r duit entre les cards */
-  }
-  .product-card {
-    padding: 10px; /* r tr cit la card */
-  }
-  .product-card img {
-    max-height: 120px; /* r duit un peu la hauteur image */
-    object-fit: cover;
-  }
-}
 
 
 .product-card {
@@ -81,7 +68,7 @@ button {
   border-radius: 15px;
   padding: 1rem;
   text-align: center;
-  box-shadow: 0 4px 12px  #fa1e0eea;
+  box-shadow: 0 4px 5px  #fa1e0eea;
   transition: 0.3s;
 }
 
@@ -1163,45 +1150,3 @@ form textarea {
 
 /* 📝 === Fin CSS de la Page Formulaire === */
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* Petits  crans (Android, iPhone) */
-@media (max-width: 600px) {
-  body {
-    font-size: 14px; /* texte un peu plus petit */
-  }
-  .products {
-    grid-template-columns: repeat(2, 1fr); /* 2 produits par ligne */
-  }
-  header nav ul {
-    flex-direction: column; /* menu en colonne */
-    text-align: center;
-  }
-  .hero-section {
-    padding: 40px 20px;
-    text-align: center;
-  }
-  .hero-section h1 {
-    font-size: 1.8rem; /* titre plus petit */
-  }
-}
-
-/* Tablettes */
-@media (min-width: 601px) and (max-width: 900px) {
-  .products {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
