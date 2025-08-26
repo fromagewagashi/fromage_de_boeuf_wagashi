@@ -68,7 +68,7 @@ button {
   border-radius: 15px;
   padding: 1rem;
   text-align: center;
-  box-shadow: 0 4px 5px  #fa1e0eea;
+  box-shadow: 0 4px 25px  #fa1e0eea;
   transition: 0.3s;
 }
 
@@ -1149,4 +1149,5 @@ form textarea {
 }
 
 /* 📝 === Fin CSS de la Page Formulaire === */
+
 
