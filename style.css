@@ -61,6 +61,20 @@ button {
   gap: 1rem;
   padding: 1rem;
 }
+@media (max-width: 600px) {
+  .products {
+    grid-template-columns: repeat(2, 1fr); /* 2 produits par ligne */
+    gap: 12px; /* espace r duit entre les cards */
+  }
+  .product-card {
+    padding: 10px; /* r tr cit la card */
+  }
+  .product-card img {
+    max-height: 120px; /* r duit un peu la hauteur image */
+    object-fit: cover;
+  }
+}
+
 
 .product-card {
   background:#ffff;
@@ -1146,4 +1160,5 @@ form textarea {
   font-size: 1.5rem;
   margin-right: 1rem;
 }
+
 /* 📝 === Fin CSS de la Page Formulaire === */
