@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="fr">
+   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Accueil - <img src="image\logo.png"
+    alt="image d'exemple" 
+    class="logo"></title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="app.js" defer></script>
+
+<body>
+
+  <header class="header">
+    <div class="logo"><img src="image\logo.png"
+    alt="image d'exemple" 
+    class="logo"></div> &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;
+    <nav class="navbar">
+      <a href="index.html" class="active">Accueil</a>
+      <a href="#produits">Produits</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <div class="menu-icons">
+      <a href="panier.html" class="cart-icon">🛒 <span id="cart-count">0</span></a>
+    </div>
+  </header>
+
+  <!-- BANNIÈRE VIDÉO AVEC TEXTE ET BOUTON -->
+  <section class="banniere-video">
+    <video autoplay muted loop playsinline>
+      <source src="video/banniere.mp4" type="video/mp4">
+      Votre navigateur ne supporte pas la vidéo.
+    </video>
+    <div class="overlay">
+      <h1>Bienvenue sur MonShop</h1>
+      <p></p>
+       <br>
+      <a href="#produits" class="btn-voir">Voir nos produits</a>
+    </div>
+  </section>
+
+
+
+  <!-- Section Titre Nos Produits avec Animation -->
+  <section class="nos-produits">
+    <h2>Nos Produits</h2>
+    <div class="underline"></div>
+  </section>
+
+
+
+
+
+
+
+
+
+
+  <!-- Produits -->
+  <section id="produits" class="product-grid">
+
+    <div class="product-card">
+      <img src="image/prod1.png" alt="Fromage nature" class="product-image" />
+      <div class="product-info">
+        <h3>Fromage Wagashi Nature</h3>
+        <p>1500 FCFA</p>
+        <button
+          onclick="goToProduct('Fromage Wagashi Nature', 1500 , 'image/prod1.png', `Découvrez le secret de la cuisine béninoise avec WAGASHI ! 
+Notre Fromage de boeuf WAGASHI est un produit de haute qualité, fabriqué à partir de l'air de boeuf sélectionné avec soin. Ce fromage est conçu pour les amateurs de saveurs authentiques qui recherchent des produits de qualité supérieure.
+
+Caractéristiques techniques : 📝
+
+- Composition : 100% air de boeuf 🐮
+- Poids : 1 kg 📦
+- Texture : Crémeuse et fondante 🤤
+- Goût : Riche et intense 😋
+
+
+Avantages : 🌟
+
+- Ajoute une saveur intense et riche à vos plats 👌
+- Idéal pour les sauces, les ragouts et les recettes béninoises traditionnelles 🍲
+- Produit de qualité supérieure, garanti sans additifs ni conservateurs 👍
+Commandez maintenant et découvrez la qualité supérieure de WAGASHI ! 🚀
+`)">Commander</button>
+         </div>
+         </div>
+
+
+
+
+      
+
+
+
+
+
+      
+    <div class="product-card">
+      <img src="image/prod2.png" alt="Fromage épicé" class="product-image" />
+      <div class="product-info">
+        <h3>Fromage Wagashi Épicé</h3>
+        <p>1800 FCFA</p>
+        <button
+          onclick="goToProduct('Fromage Wagashi Épicé', 1800 , 'image/prod2.png', `Fromage doux et naturel
+- Texture crémeuse
+- Idéal pour vos recettes
+C'est le goût du village !`
+)">Commander</button>
+      </div>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class="product-card">
+      <img src="image/prod3.png" alt="Fromage épicé" class="product-image" />
+      <div class="product-info">
+        <h3>Fromage Wagashi Épicé</h3>
+        <p>1900 FCFA</p>
+        <button
+          onclick="goToProduct('Fromage Wagashi Épicé', 1900 , 'image/prod3.png', 'Fromage légèrement pimenté pour relever le goût de vos plats africains.')">Commander</button>
+      </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class="product-card">
+      <img src="image/prod4.png" alt="Fromage épicé" class="product-image" />
+      <div class="product-info">
+        <h3>Fromage Wagashi Épicé</h3>
+        <p>1800 FCFA</p>
+        <button
+          onclick="goToProduct('Fromage Wagashi Épicé', 1800 , 'image/prod4.png', 'Fromage légèrement pimenté pour relever le goût de vos plats africains.')">Commander</button>
+      </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class="product-card">
+      <img src="image/prod5.png" alt="Fromage épicé" class="product-image" />
+      <div class="product-info">
+        <h3>Fromage Wagashi Épicé</h3>
+        <p>1800 FCFA</p>
+        <button
+          onclick="goToProduct('Fromage Wagashi Épicé', 1800 , 'image/prod5.png', 'Fromage légèrement pimenté pour relever le goût de vos plats africains.')">Commander</button>
+      </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+     <div class="product-card">
+      <img src="image/prod6.png" alt="Fromage nature" class="product-image" />
+      <div class="product-info">
+        <h3>Fromage Wagashi Nature</h3>
+        <p>1500 FCFA</p>
+        <button
+          onclick="goToProduct('Fromage Wagashi Nature', 1500 , 'image/prod6.png', 'Fromage doux et naturel, parfait pour toutes vos recettes traditionnelles.')">Commander</button>
+      </div>
+    </div>
+
+  </section>
+
+
+
+
+
+  <!-- Bannière Promotionnelle : Début -->
+  <section class="promo-carousel">
+    <div class="carousel">
+      <div class="slides active">
+        <img src="image\promo1.png" alt="Promo 1">
+        <div class="promo-text">🔥 Jusqu'à -50% sur vos produits préférés !</div>
+      </div>
+      <div class="slides">
+        <img src="image\promo2.png" alt="Promo 2">
+        <div class="promo-text">🚚 Livraison offerte dès 20.000 FCFA d'achat</div>
+      </div>
+      <div class="slides">
+        <img src="image\promo3.png" alt="Promo 3">
+        <div class="promo-text">🛍️ Nouveautés disponibles dès maintenant !</div>
+      </div>
+      <button class="prev">&#10094;</button>
+      <button class="next">&#10095;</button>
+    </div>
+  </section>
+  <script>
+    <!-- Bannière Promotionnelle : Fin -->
+    // ===== BANNIÈRE PROMOTIONNELLE : CARROUSEL =====
+    let slideIndex = 0;
+    const slides = document.querySelectorAll(".slides");
+    const nextBtn = document.querySelector(".next");
+    const prevBtn = document.querySelector(".prev");
+
+    function showSlide(index) {
+      slides.forEach((slide, i) => {
+        slide.classList.remove("active");
+        if (i === index) slide.classList.add("active");
+      });
+    }
+
+    function nextSlide() {
+      slideIndex = (slideIndex + 1) % slides.length;
+      showSlide(slideIndex);
+    }
+
+    function prevSlide() {
+      slideIndex = (slideIndex - 1 + slides.length) % slides.length;
+      showSlide(slideIndex);
+    }
+
+    nextBtn.addEventListener("click", nextSlide);
+    prevBtn.addEventListener("click", prevSlide);
+
+    // Défilement automatique toutes les 5 secondes
+    setInterval(nextSlide, 5000);
+
+    // Initialisation
+    showSlide(slideIndex);
+  </script>
+
+
+
+  <!-- Nos garanties -->
+  <section class="values">
+    <h2>Pourquoi acheter chez nous ?</h2>
+    <div class="value-cards">
+      <div class="value">
+        <img src="image\livraison-gratuite.png" alt="Qualité">
+        <h3>Livraison gratuite</h3>
+      </div>
+      <div class="value">
+        <img src="image\produit (1).png" alt="Livraison">
+        <h3>Qualité artisanale</h3>
+      </div>
+      <div class="value">
+        <img src="image\sac-dargent.png" alt="Support">
+        <h3>paiement a la livraison</h3>
+      </div>
+    </div>
+  </section>
+
+
+
+  <script>
+    // Mise à jour compteur panier au chargement
+    window.addEventListener("DOMContentLoaded", () => {
+      const cart = JSON.parse(localStorage.getItem('cart')) || [];
+      const cartCount = document.getElementById('cart-count');
+      if (cartCount) cartCount.textContent = cart.length;
+    });
+  </script>
+
+
+  <!-- ⏰ Offre flash -->
+  <div class="offer-timer">
+    <h2>⚡ Promo limitée : -20% sur tout le site !</h2>
+    <div id="countdown">
+      <span id="hours">00</span> :
+      <span id="minutes">00</span> :
+      <span id="seconds">00</span>
+    </div>
+  </div>
+
+  <!-- ⏰ Script JS pour le minuteur -->
+  <script>
+    // Compte à rebours de 1h
+    const end = new Date(new Date().getTime() + 60 * 60 * 1000);
+    const countdown = () => {
+      const now = new Date().getTime();
+      const diff = end - now;
+      if (diff < 0) return;
+      const h = Math.floor(diff / (1000 * 60 * 60));
+      const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+      const s = Math.floor((diff % (1000 * 60)) / 1000);
+      document.getElementById('hours').innerText = String(h).padStart(2, '0');
+      document.getElementById('minutes').innerText = String(m).padStart(2, '0');
+      document.getElementById('seconds').innerText = String(s).padStart(2, '0');
+    };
+    setInterval(countdown, 1000);
+  </script>
+
+
+
+
+  <!-- 🔢 Compteurs -->
+  <section class="counter-section">
+    <div class="counter-box">
+      <span class="counter" data-target="1200">0</span>
+      <p>Clients satisfaits</p>
+    </div>
+    <div class="counter-box">
+      <span class="counter" data-target="5000">0</span>
+      <p>Commandes livrées</p>
+    </div>
+    <div class="counter-box">
+      <span class="counter" data-target="99">0</span>
+      <p>% Avis positifs</p>
+    </div>
+  </section>
+  <!-- 🔢 Script JS pour compteur -->
+  <script>
+   const counters = document.querySelectorAll('.counter');
+counters.forEach(counter => {
+  let value = 0;
+  const target = +counter.getAttribute('data-target');
+  const speed = 50; // vitesse d’incrémentation (plus petit = plus rapide)
+
+  setInterval(() => {
+    value++;
+    if (value > target) {
+      value = 0; // ⬅️ repart de 0 quand on dépasse la cible
+    }
+    counter.innerText = value;
+  }, speed);
+});
+  </script>
+
+
+
+
+
+
+
+<section class="temoignages">
+  <h2>Ce que disent nos clients</h2>
+     <section class="reviews">
+    <div class="review-summary">
+      <h2>EXCELLENT</h2>
+      <div class="stars">★★★★★</div>
+      <!-- ✅ Ligne "Basée sur 6 avis" supprimée -->
+      <img src="image\waouh.png" alt="Google" class="google-logo" />
+    </div>
+
+    <div id="reviews-container"></div>
+  </section>
+
+  <script src="script.js"></script>
+
+
+
+
+
+
+
+<img src="image\logo.png" alt="Good Shopping" class="good-shopping-image">
+
+  
+   <!-- Bande défilante promo -->
+  <marquee behavior="scroll" direction="left" scrollamount="5" style="background: #ffd700; color: #000; padding: 8px;">
+    <b>🚚 Livraison gratuite à Cotonou dès 2 fromages achetés ! Offre valable cette semaine seulement !</b>
+  </marquee>
+
+</body>
+</html>

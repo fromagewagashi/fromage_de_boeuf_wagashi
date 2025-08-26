@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Finaliser la commande</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .checkout-container { max-width: 900px; margin: 24px auto; padding: 16px; }
+    .order-summary { border: 1px solid #eee; border-radius: 12px; padding: 16px; margin: 16px 0; }
+    .order-summary h2 { margin-top: 0; }
+    .order-item { display: grid; grid-template-columns: 1fr auto auto; gap: 8px; padding: 8px 0; border-bottom: 1px dashed #eee; }
+    .order-item:last-child { border-bottom: none; }
+    .order-total { display: flex; justify-content: space-between; font-weight: 700; padding-top: 8px; }
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .form-grid .full { grid-column: 1 / -1; }
+    input, select, textarea { width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 10px; }
+    button[type="submit"] { width: 100%; padding: 12px; border: none; border-radius: 12px; cursor: pointer; background:#111827; color:#fff; }
+    .status { margin-top: 12px; font-size: 0.95rem; }
+
+
+
+    /* Titre "Finaliser la commande" en orange */
+.checkout-container h1 {
+  color: #F59E0B; /* orange-dor  */
+}
+
+/* Libell  "Total" et montant en vert */
+.order-total span {
+  color: #4dff6b; /* vert fonc  */
+  font-weight: bold;
+}
+
+/* Bouton "Envoyer la commande" en vert */
+button[type="submit"] {
+  background: #16A34A;
+  color: #fff;
+}
+button[type="submit"]:hover {
+  background: #15803D; /* vert un peu plus fonc  au survol */
+}
+  </style>
+</head>
+<body>
+  <main class="checkout-container">
+    <h1>FINALISER LA COMMANDE</h1>
+
+    <section class="order-summary">
+      <h2>Votre commande</h2>
+      <div id="order-list"></div>
+      <div class="order-total">
+        <span>Total</span>
+        <span id="order-total">0 FCFA</span>
+      </div>
+    </section>
+
+    <form id="order-form" autocomplete="on">
+      <div class="form-grid">
+        <div>
+          <label>Nom complet*</label>
+          <input name="name" required />
+        </div>
+        <div>
+          <label>Téléphone (WhatsApp)*</label>
+          <input name="phone" required inputmode="tel" />
+        </div>
+        <div>
+          <label>Email</label>
+          <input name="email" type="email" />
+        </div>
+        <div>
+          <label>Ville</label>
+          <input name="city" />
+        </div>
+        <div class="full">
+          <label>Adresse complète*</label>
+          <input name="address" required />
+        </div>
+        <div class="full">
+          <label>Notes (optionnel)</label>
+          <textarea name="notes" rows="4" placeholder="Détails de livraison, créneau, etc."></textarea>
+        </div>
+      </div>
+
+      <button type="submit">Envoyer la commande</button>
+      <div id="status" class="status"></div>
+    </form>
+  </main>
+
+  <script>
+    function formatFCFA(n) { return new Intl.NumberFormat('fr-FR').format(Math.round(n)) + ' FCFA'; }
+
+    function getOrderItems() {
+      try {
+        const cart = JSON.parse(localStorage.getItem('cart') || '[]');
+        if (Array.isArray(cart) && cart.length) return cart;
+        const sel = JSON.parse(localStorage.getItem('selectedProduct') || 'null');
+        if (sel) return [{ ...sel, quantity: sel.quantity || 1 }];
+      } catch (e) { return []; }
+      return [];
+    }
+
+    const orderListEl = document.getElementById('order-list');
+    const orderTotalEl = document.getElementById('order-total');
+    const items = getOrderItems();
+
+    if (!items.length) {
+      orderListEl.innerHTML = "<p>Aucun article. <a href='index.html'>Retour à la boutique</a></p>";
+    } else {
+      let html = '';
+      let total = 0;
+      items.forEach(it => {
+        const qty = Number(it.quantity) || 1;
+        const line = (Number(it.price) || 0) * qty;
+        total += line;
+        html += `
+          <div class="order-item">
+            <div>${it.name} <small>(x${qty})</small></div>
+            <div>${formatFCFA(Number(it.price)||0)}</div>
+            <div>${formatFCFA(line)}</div>
+          </div>
+        `;
+      });
+      orderListEl.innerHTML = html;
+      orderTotalEl.textContent = formatFCFA(total);
+    }
+
+    // ==== CONFIGURE TON URL GAS ICI ====
+    const GAS_URL = 'PASTE_YOUR_WEB_APP_URL_HERE'; // <-- Remplace par l'URL du Web App Google Apps Script
+
+    document.getElementById('order-form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const status = document.getElementById('status');
+      status.textContent = 'Envoi en cours...';
+
+      // Récap en texte
+      let total = 0;
+      const lines = items.map(it => {
+        const qty = Number(it.quantity) || 1;
+        const line = (Number(it.price) || 0) * qty;
+        total += line;
+        return `${it.name} x${qty} = ${line} FCFA`;
+      });
+      const itemsText = lines.join('\n');
+
+      const fd = new FormData(e.target);
+      fd.append('items', JSON.stringify(items));      // brut
+      fd.append('itemsText', itemsText);              // lisible
+      fd.append('total', String(total));
+
+      try {
+        const resp = await fetch(GAS_URL, { method: 'POST', body: fd });
+        if (!resp.ok) throw new Error('Erreur réseau');
+        status.textContent = 'Commande envoyée ! Merci 🙏';
+        // vider le panier
+        localStorage.removeItem('cart');
+        // optionnel : localStorage.removeItem('selectedProduct');
+      } catch (err) {
+        console.error(err);
+        status.textContent = "Échec d'envoi. Si le problème persiste, contacte via WhatsApp.";
+      }
+    });
+  </script>
+</body>
+</html>

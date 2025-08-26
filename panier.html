@@ -1,0 +1,124 @@
+
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Panier</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="app.js" defer></script>
+  <script defer>
+    // ce script gère uniquement l'affichage local du panier sur cette page
+    function renderCart() {
+      const cart = JSON.parse(localStorage.getItem("cart") || "[]");
+      const cartList = document.getElementById("cart-items");
+      const totalAmount = document.getElementById("total-amount");
+      cartList.innerHTML = "";
+      let total = 0;
+
+      if (!cart.length) {
+        cartList.innerHTML = "<p>Votre panier est vide. <a href='index.html'>Retourner à la boutique</a></p>";
+        totalAmount.textContent = "0 FCFA";
+        document.getElementById("cart-count").textContent = "0";
+        return;
+      }
+
+      cart.forEach((item, index) => {
+        const li = document.createElement("li");
+        li.classList.add("cart-item");
+
+        const qty = Number(item.quantity) || 1;
+        const line = (Number(item.price) || 0) * qty;
+        total += line;
+
+        li.innerHTML = `
+          <img src="${item.image}" class="cart-thumb" alt="img"/>
+          <div class="item-details">
+            <h4>${item.name}</h4>
+            <p>${item.price} FCFA x ${qty}</p>
+          </div>
+          <div style="display:flex; flex-direction:column; gap:6px; align-items:center;">
+            <div>
+              <button onclick="changeQty(${index}, -1)" class="qty-btn"  title="Réduire">-</button>
+              <span style="padding:0 8px">${qty}</span>
+              <button onclick="changeQty(${index}, 1)" class="qty-btn"  title="Augmenter">+</button>
+            </div>
+            <button onclick="removeItem(${index})" class="remove-btn" title="Supprimer">🗑️</button>
+          </div>
+        `;
+        cartList.appendChild(li);
+      });
+
+      totalAmount.textContent = formatFCFA(total);
+      document.getElementById("cart-count").textContent = cart.reduce((s,i) => s + (Number(i.quantity)||1), 0);
+      // mettre à jour app.js cart en mémoire (si modifié via boutons)
+      // (ici on lit/sauvegarde dans localStorage)
+    }
+
+    function formatFCFA(n) {
+      return new Intl.NumberFormat('fr-FR').format(Math.round(n)) + ' FCFA';
+    }
+
+    function removeItem(index) {
+      const cart = JSON.parse(localStorage.getItem("cart") || "[]");
+      cart.splice(index, 1);
+      localStorage.setItem("cart", JSON.stringify(cart));
+      renderCart();
+      updateCartCount();
+    }
+
+    function changeQty(index, delta) {
+      const cart = JSON.parse(localStorage.getItem("cart") || "[]");
+      if (!cart[index]) return;
+      cart[index].quantity = Math.max(1, (Number(cart[index].quantity) || 1) + delta);
+      localStorage.setItem("cart", JSON.stringify(cart));
+      renderCart();
+      updateCartCount();
+    }
+
+    // Commander maintenant depuis le panier : on garde le panier tel quel et on va sur checkout
+    function checkoutFromCart() {
+      const cart = JSON.parse(localStorage.getItem("cart") || "[]");
+      if (!cart.length) return alert("Votre panier est vide.");
+      // redirection vers checkout (checkout lira le panier depuis localStorage)
+      window.location.href = 'checkout.html';
+    }
+
+    window.addEventListener("DOMContentLoaded", () => {
+      renderCart();
+      updateCartCount();
+    });
+  </script>
+</head>
+<body>
+  <header class="header">
+    <div class="logo"><img src="image\logo.png" alt="image d'exemple"
+     class="logo"></div> &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;
+    <nav class="navbar">
+      <a href="index.html" class="active">Accueil</a>
+      <a href="index.html#produits">Produits</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <div class="menu-icons">
+      <a href="panier.html">🛒 <span id="cart-count">0</span></a>
+    </div>
+  </header>
+
+  <section class="cart-section">
+    <h1>🛒 Votre Panier</h1>
+    <ul id="cart-items"></ul>
+
+
+    <div class="cart-total">
+      <strong>Total :</strong> <span id="total-amount">0 FCFA</span>
+    </div>
+
+    <div class="cart-actions">
+      <button class="commander-btn" onclick="checkoutFromCart()">Commander maintenant</button>
+    </div>
+  </section>
+
+</body>
+</html>
+

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact - MonShop</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="header">
+    <div class="logo"><img src="image\logo.png"
+    alt="image d'exemple" 
+    class="logo"></div> &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;
+    <nav class="navbar">
+      <a href="index.html" class="active">Accueil</a>
+       <a href="index.html#produits">Produits</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <div class="menu-icons">
+      <a href="panier.html" class="cart-icon">🛒 <span id="cart-count">0</span></a>
+    </div>
+  </header>
+
+  <section class="contact-section">
+    <h1>📞 Contactez-nous</h1>
+    <p>Pour toute question ou commande, voici nos coordonnées :</p>
+
+    <div class="contact-box">
+      <div class="contact-item">
+        <h3>📍 Adresse</h3>
+        <p>Marché St Michel, Cotonou, Bénin</p>
+      </div>
+      <div class="contact-item">
+        <h3>📱 Téléphone</h3>
+        <p>+229 01 68 84 45 85</p>
+      </div>
+      <div class="contact-item">
+        <h3>📧 Email</h3>
+        <p>fromagewagashi@monshop.com</p>
+      </div>
+    </div>
+
+    <div class="cta-contact">
+      <a href="https://wa.me/22997123456" target="_blank" class="hero-btn">📲 Envoyer un message WhatsApp</a>
+    </div>
+  </section>
+
+  <script>
+    // Actualiser le compteur du panier à l'ouverture
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    const cartCount = document.getElementById('cart-count');
+    if (cartCount) cartCount.textContent = cart.length;
+  </script>
+</body>
+</html>

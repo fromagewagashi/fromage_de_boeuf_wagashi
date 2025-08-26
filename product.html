@@ -1,0 +1,113 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Produit</title>
+  <link rel="stylesheet" href="style.css" />
+  <!-- charger app.js pour fonctions addToCart / goToProduct / buyNow -->
+  <script src="app.js" defer></script>
+  <script defer>
+    let quantity = 1;
+    let product = null;
+
+    window.addEventListener('DOMContentLoaded', () => {
+      product = JSON.parse(localStorage.getItem('selectedProduct') || 'null');
+      if (product) {
+        document.getElementById('product-image').src = product.image || 'image/prod1.png';
+        document.getElementById('product-title').textContent = product.name || '';
+        document.getElementById('product-price').textContent = (Number(product.price) || 0) + " FCFA";
+        // Respecter les sauts de ligne dans la description
+        document.getElementById('product-description').innerHTML =
+          (product.description || '').replace(/\r?\n/g, '<br>');
+      } else {
+        // si pas de produit sélectionné, rediriger vers l'accueil
+        // (ou afficher message)
+        // window.location.href = 'index.html';
+      }
+      updateCartCount();
+      updateQuantity();
+    });
+
+    function updateQuantity() {
+      document.getElementById('qty-value').textContent = quantity;
+    }
+
+    function increaseQty() {
+      quantity++;
+      updateQuantity();
+    }
+
+    function decreaseQty() {
+      if (quantity > 1) quantity--;
+      updateQuantity();
+    }
+
+    function addToCartFromProduct() {
+      if (!product) return alert("Produit introuvable.");
+      addToCart({
+        name: product.name,
+        price: product.price,
+        image: product.image,
+        description: product.description,
+        quantity: quantity
+      });
+      alert(`${product.name} (x${quantity}) ajouté au panier`);
+    }
+
+    function buyNowCurrentProduct() {
+      if (!product) return alert("Produit introuvable.");
+      // utilise la fonction buyNow définie dans app.js
+      buyNow({
+        name: product.name,
+        price: product.price,
+        image: product.image,
+        description: product.description,
+        quantity: quantity
+      });
+    }
+  </script>
+</head>
+<body>
+  <header class="header">
+    <div class="logo"><img src="image\logo.png"
+    alt="image d'exemple" 
+    class="logo"></div> &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;
+    <nav class="navbar">
+      <a href="index.html" class="active">Accueil</a>
+      <a href="index.html#produits">Produits</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <div class="menu-icons">
+      <a href="panier.html" class="cart-icon">🛒 <span id="cart-count">0</span></a>
+    </div>
+  </header>
+
+  <div class="product-page">
+    <div class="product-left">
+      <img id="product-image" src="" alt="Produit" />
+      <div class="qty-selector">
+        <button onclick="decreaseQty()">-</button>
+        <span id="qty-value">1</span>
+        <button onclick="increaseQty()">+</button>
+      </div>
+      <div class="btn-group">
+        <button class="add-btn" onclick="addToCartFromProduct()">Ajouter au panier</button>
+      </div><br>
+      <div class="btn-group">
+        <button class="order-btn" onclick="buyNowCurrentProduct()">Commander</button>
+      </div>
+    </div>
+
+    <div class="product-right">
+      <h1 id="product-title"></h1>
+      <p class="price" id="product-price"></p>
+      <div class="product-description" id="product-description"></div>
+    </div>
+  </div>
+</body>
+</html>
+
+
+
