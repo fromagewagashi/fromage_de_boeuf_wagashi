@@ -58,17 +58,16 @@ button {
 .product-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-  gap: 1rem;
-  padding: 1rem;
+  gap: 10px;
+  padding: 10px;
 }
-
 
 .product-card {
   background:#ffff;
   border-radius: 15px;
   padding: 1rem;
   text-align: center;
-  box-shadow: 0 4px 25px  #fa1e0eea;
+  box-shadow: 0 4px 12px  #fa1e0eea;
   transition: 0.3s;
 }
 
@@ -100,6 +99,8 @@ button {
   border-radius: 30px;
   font-size: 1.2rem;
 }
+
+
 /* 🏠 === Fin CSS de la Page d’accueil === */
 
 
@@ -1147,7 +1148,4 @@ form textarea {
   font-size: 1.5rem;
   margin-right: 1rem;
 }
-
 /* 📝 === Fin CSS de la Page Formulaire === */
-
-
