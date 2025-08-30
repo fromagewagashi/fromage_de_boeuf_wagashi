@@ -1031,7 +1031,7 @@ button {
 
 
 .good-shopping-image {
-  width: 400px;               /* ajuste selon ta préférence */
+  width: 200px;               /* ajuste selon ta préférence */
   height: auto;
   
   transition: transform 0.4s ease;
@@ -1149,3 +1149,4 @@ form textarea {
   margin-right: 1rem;
 }
 /* 📝 === Fin CSS de la Page Formulaire === */
+
