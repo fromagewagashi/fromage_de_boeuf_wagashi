@@ -10,19 +10,27 @@
 
 <body>
 
-  <header class="header">
-    <div class="logo"><img src="image\logo.png"
-    alt="image d'exemple" 
-    class="logo"></div>  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-    <nav class="navbar">
-      <a href="index.html" class="active">Accueil</a>
-      <a href="#produits">Produits</a>
-      <a href="contact.html">Contact</a>
-    </nav>
-    <div class="menu-icons">
-      <a href="panier.html" class="cart-icon">🛒 <span id="cart-count">0</span></a>
+ <header class="site-header">
+  <!-- Barre du haut -->
+  <div class="top-bar">
+    <a href="index.html" class="logo-link">
+      <img src="image/logo.png" alt="Logo Wagashi" class="logo-img">
+    </a>
+    <div class="cart-wrap">
+      <a href="panier.html" class="cart-icon">
+        🛒 <span id="cart-count">0</span>
+      </a>
     </div>
-  </header>
+  </div>
+
+  <!-- Barre du menu -->
+  <nav class="nav-bar">
+    <a href="index.html" class="nav-link">Accueil</a>
+    <a href="index.html#produits" class="nav-link">Produits</a>
+    <a href="contact.html" class="nav-link">Contact</a>
+  </nav>
+</header>
+
 
   <!-- BANNIÈRE VIDÉO AVEC TEXTE ET BOUTON -->
   <section class="banniere-video">
@@ -389,8 +397,4 @@ counters.forEach(counter => {
   </marquee>
 
 </body>
-
 </html>
-
-
-
