@@ -39,6 +39,60 @@ button[type="submit"] {
 button[type="submit"]:hover {
   background: #15803D; /* vert un peu plus fonc  au survol */
 }
+
+
+
+
+/* Overlay */
+.popup-overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.6);
+  display: none;  /* caché par défaut */
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+/* Contenu */
+.popup-content {
+  background: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  text-align: center;
+  max-width: 320px;
+  width: 90%;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  animation: fadeIn 0.3s ease;
+}
+
+/* Icône */
+.popup-icon {
+  width: 80px;
+  margin-bottom: 10px;
+}
+
+/* Bouton */
+.popup-content button {
+  margin-top: 15px;
+  padding: 10px 20px;
+  background: #16A34A;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.popup-content button:hover {
+  background: #15803D;
+}
+
+@keyframes fadeIn {
+  from { transform: scale(0.9); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+
+
   </style>
 </head>
 <body>
@@ -126,7 +180,7 @@ button[type="submit"]:hover {
     }
 
     // ==== CONFIGURE TON URL GAS ICI ====
-    const GAS_URL = 'https://script.google.com/macros/s/AKfycbzohlR8QoCsKgM37g4AnVad1acQwNm7lZJ-gb7VpNw2mmlJzdu8iOZUh9LDI82bMbR_/exec'; // <-- Remplace par l'URL du Web App Google Apps Script
+    const GAS_URL = 'PASTE_YOUR_WEB_APP_URL_HERE'; // <-- Remplace par l'URL du Web App Google Apps Script
 
     document.getElementById('order-form').addEventListener('submit', async (e) => {
       e.preventDefault();
@@ -151,7 +205,14 @@ button[type="submit"]:hover {
       try {
         const resp = await fetch(GAS_URL, { method: 'POST', body: fd });
         if (!resp.ok) throw new Error('Erreur réseau');
-        status.textContent = 'Commande envoyée ! Merci 🙏';
+       // Après succès de l'envoi
+document.getElementById("confirmation-popup").style.display = "flex";
+
+
+function closePopup() {
+  document.getElementById("confirmation-popup").style.display = "none";
+  window.location.href = "index.html"; // redirige vers l'accueil
+}
         // vider le panier
         localStorage.removeItem('cart');
         // optionnel : localStorage.removeItem('selectedProduct');
@@ -161,6 +222,24 @@ button[type="submit"]:hover {
       }
     });
   </script>
+
+
+
+<!-- Confirmation Popup -->
+<div id="confirmation-popup" class="popup-overlay">
+  <div class="popup-content">
+    <img src="image/success.png" alt="Succès" class="popup-icon">
+    <h2>Commande envoyée ✅</h2>
+    <p>Merci ! Votre commande a été enregistrée avec succès.</p>
+    <button onclick="closePopup()">OK</button>
+  </div>
+</div>
+
+
+
+
+
+
+
 </body>
 </html>
-
