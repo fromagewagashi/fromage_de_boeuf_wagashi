@@ -357,7 +357,10 @@ button {
 .contact-section {
   padding: 3rem 2rem;
   text-align: center;
-  background: #f9f9f9;
+  
+    background: #ffffff;
+   background-size: cover;
+ padding-bottom: 300PX;
 }
 
 .contact-section h1 {
@@ -374,7 +377,7 @@ button {
 }
 
 .contact-item {
-  background: white;
+  background: rgb(252, 231, 49);
   padding: 1.5rem;
   border-radius: 12px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
@@ -406,6 +409,8 @@ button {
   max-width: 700px;
   margin: auto;
   background: #ffffff;
+   background-size: cover;
+ padding-bottom: 300PX;
 }
 
 .cart-section h1 {
@@ -494,95 +499,316 @@ button {
 
 
 
-/* === Page produit === */
-
-
-/* === Page produit === */
-.product-page {
-  display: flex;
-  height: calc(100vh - 80px);
-}
-
-.product-left {
-  width: 70%;
+/* === Carte produit === */
+.product-card1 {
  
-  padding: 1rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+ background:#ffff;
+ background-size: cover;
+ padding-bottom: 300PX;
+ }
+
+
+
+
   
-  position: sticky;
-  top: 80px;
-  height: 100vh;
+
+
+
+
+
+
+
+
+/* Image */
+.card-media {
+  width: auto;
+  height: 200px;
+  
+  border-radius: 30px;
+  margin-right: 10%;
+  float: left;
+  margin-top: 20px;
+  margin-left: 20px;
+  float: left;
+}
+.card-media img {
+  width: 100%;
+  height: 150%;
+  object-fit: fill;
+  border-radius: 30px;
+  
 }
 
-.product-left img {
-  max-width: 100%;
-  border-radius: 20px;
-  margin-bottom: 1.5rem;
+/* Corps */
+.card-body {
+  padding: 20px;
+  padding-bottom: 120px; /* pour ne pas masquer le texte sous les boutons */
 }
 
-.qty-selector {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  margin-bottom: 2rem;
-}
-
-.qty-selector button {
-  font-size: 1.2rem;
-  padding: 0.4rem 1rem;
-  border: none;
-  border-radius: 10px;
-  background: #ddd;
+.titre {
+  font-size: 50px;
   font-weight: bold;
+  color: #ffe65a;
+  margin-left: 550px;
+ 
 }
 
-.btn-group {
+.price {
+  font-size: 60px;
+  font-weight: bold;
+  color: green;
+  margin: 8px 0;
+  margin-left: 50%;
+}
+.desc-title {
+  margin-top: 14px;
+  font-weight: bold;
+  font-size: 40px;
+  color: #333;
+margin-left: 30%;
+float: right;
+  width: 50%;
+  margin-top: -150PX;
+}
+.product-desc-full {
+  margin-top: 10px;
+  color: #666;
+  font-size: 14px;
+  line-height: 1.5;
+  clear: both;
+  overflow-y: auto;
+  float: right;
+  width: 80%;
+  margin-top: -80PX;
+  }
+  
+
+/* Sélecteur quantité */
+.qty-selector {
+  display: block;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 14px;
+  margin-left: -10PX;
+  clear: both;
+  margin-top: 140PX;
+
+  
+}
+.qty-selector button {
+  width: 32px;
+  height: 32px;
+  border: none;
+  background: #eee;
+  border-radius: 50%;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-left: 20PX;
+}
+.qty-selector span {
+  font-size: 16px;
+  font-weight: bold;
+  margin-left: 20PX;
+}
+
+/* Boutons fixes */
+.action-bar {
+  position: fixed;
+  bottom: 16px;
+  left: 16px;
+  right: 16px;
   display: flex;
-  gap: 2rem;
+  justify-content: space-between;
+  gap: 12px;
+  
+  background:#ffff;
+  background-attachment: fixed;
+  flex-wrap: nowrap;
+}
+.order-btn {
+  flex: 1;
+  background: #25d366;
+  border: none;
+  border-radius: 25px;
+  padding: 12px;
+  font-weight: bold;
+  box-shadow: 0 6px 14px rgba(0,0,0,0.08);
+  cursor: pointer;
 }
 
 .add-btn {
-  background: #333;
-  color: white;
-  padding: 0.7rem 1.4rem;
+  flex: 2;
+  background: #1a1a2e;
+  color: #fff;
   border: none;
-  border-radius: 30px;
+  border-radius: 25px;
+  padding: 12px;
   font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  box-shadow: 0 6px 14px rgba(0,0,0,0.15);
+
+  }
+
+/* Responsive */
+@media (max-width: 500px) { 
+  .action-bar {
+   
+  padding: 5%;
+
 }
 
+
+.action-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 90%;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0px -2px 10px rgba(0,0,0,0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  
+}
 .order-btn {
-  background: #25d366;
-  color: white;
-  padding: 1rem 2.4rem;
+   padding: 15px 30px;
   border: none;
+  border-radius: 5px;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-left: -5px;
+
+
+  background-color: #4caf50;
+  color: #fff;
+  animation: respiration 1s infinite;
+}
+
+@keyframes respiration {
+  0% {
+    transform: scale(1);
+    }
+
+      50% {
+    transform: scale(1.1);
+    }
+
+      100% {
+    transform: scale(1);
+    }
+}
+
+
+
+
+
+
+.add-btn {
+   padding: 15px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  
+
+  background-color: #fff;
+  color:#333 ;
+  border: 1px solid #ddd ;
+  animation: respiration 3s infinite;
+}
+
+
+
+
+
+.qty-selector {
+  
+  gap: 14px;
+  margin-top: 30PX;
+  position: relative;
+  margin-left: -15PX;
+}
+
+
+.price {
+  font-size: 20px;
+  font-weight: bold;
+  color: green;
+  margin: 8px 0;
+  margin-left: 50%;
+}
+
+
+.card-media {
+  width: auto;
+  height: 200px;
+  overflow: hidden;
   border-radius: 30px;
-  font-weight: bold;
+  margin-right: 10%;
+  float: left;
+  margin-top: 20px;
+  margin-left: 20px;
+}
+.card-media img {
+  width: 100%;
+  height: 100% ;
+  object-fit: fill;
+  
 }
 
-.product-right {
-  width: 60%;
-  padding: 2rem;
+
+.desc-title {
+
+margin-top: 14px;
+  font-weight: bold;
+  font-size: 20px;
+  color: #333;
+margin-left: 30%;
+float: none;
+  width: 0%;
+}
+.product-desc-full {
+  margin-top: 10px;
+  color: #666;
+  font-size: 14px;
+  line-height: 1.5;
+  clear: both;
   overflow-y: auto;
-}
+  float: none;
+  width: 100%;
+  
+  
 
-.product-right h1 {
-  font-size: 2rem;
+}
+.titre {
+  font-size: 35px;
   font-weight: bold;
-  margin-bottom: 1rem;
+  color: #ffe65a;
+  margin-left: 0px;
+ 
 }
 
-.product-right .price {
-  font-size: 1.2rem;
-  font-weight: bold;
-  margin-bottom: 1.5rem;
+
+
+
+
+  
+
+  
 }
 
-.product-description {
-  font-size: 1rem;
-  line-height: 1.6;
-}
+
+
 
 
 
@@ -814,7 +1040,7 @@ button {
     font-size: 14px;
     bottom: 10px;
     left: 10px;
-    padding: 8px 12px;
+    
   }
 }
 
@@ -875,12 +1101,33 @@ button {
 .banniere-video .overlay h1 {
   font-size: 3rem;
   margin-bottom: 0.5rem;
+  margin-top: -15%;
+  margin-left: -40px;
+
+
+
+  font-weight: bold;
+  animation: vague 0.5s infinite;
 }
 
-.banniere-video .overlay p {
-  font-size: 1.5rem;
-  margin-bottom: 1.5rem;
-}
+
+
+@keyframes vague {
+    0% {
+    transform: translate(0);
+  }
+
+    50% {
+    transform: translate(10px);
+  }
+
+    100% {
+    transform: translate(0);
+  }
+  }
+
+
+
 
 .banniere-video .btn-voir {
   background-color: #ffcc00;
@@ -890,6 +1137,8 @@ button {
   text-decoration: none;
   border-radius: 30px;
   transition: background-color 0.3s ease;
+  margin-top: 25%;
+  margin-left: -40px;
 }
 
 .banniere-video .btn-voir:hover {
